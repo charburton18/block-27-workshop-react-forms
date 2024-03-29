@@ -1,11 +1,11 @@
 import { useState } from "react"
 
 
-const SignUpForm = () => {
+const SignUpForm = ({setToken}) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
-  
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -16,12 +16,13 @@ const SignUpForm = () => {
           "Content-Type": "application/json" 
         }, 
         body: JSON.stringify({ 
-          username: "some-username", 
-          password: "super-secret-999" 
+          username: [username], 
+          password: [password]
         }) 
       })
         const result = await response.json();
         console.log(result);
+        setToken(result.token);
     } 
     catch (error) {
       setError(error.message);
@@ -30,29 +31,34 @@ const SignUpForm = () => {
 
   return (
     <>
-      <h2>Sign Up</h2>
+      <h2>Login</h2>
       {error && <p>{error}</p>}
 
-      <form onSubmit={handleSubmit}>
+      <div id="loginInfo">
+        <form onSubmit={handleSubmit}>
 
-        <label>
-          Username: 
-          <input 
-          value={username} 
-          onChange={(e) => setUsername(e.target.value)} 
-          />
+          <label>
+            Username:
+            <input 
+            value={username} 
+            onChange={(e) => setUsername(e.target.value)} 
+            />
 
-        </label>
+          </label>
+          
+          <br/>
 
-        <label>
-          Password: 
-          <input 
-          value={password} 
-          onChange={(e) => setPassword(e.target.value)} 
-          />
-        </label>
-        <button>Submit</button>
-      </form>
+          <label>
+            Password: 
+            <input 
+            value={password} 
+            onChange={(e) => setPassword(e.target.value)} 
+            />
+          </label>
+          <br/>
+          <button>Submit</button>
+        </form>
+      </div>
     </>
   )
 }

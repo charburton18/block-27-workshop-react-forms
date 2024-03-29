@@ -1,0 +1,36 @@
+body {
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6IhPMYOlE4_PpWBlvrKWZGjCYJkhpWNY2Aw&usqp=CAU');
+  background-repeat: repeat-x;
+  background-position: bottom;
+  background-size: 100vh;
+  min-height: 100vh;
+}
+
+h1, h2, p {
+  text-align: center;
+  font-family: 'Sacramento', cursive;
+  font-size: 5vh;
+}
+
+#loginInfo, #authInfo {
+  text-align: center;
+}
+
+button {
+  background-color: green;
+  margin: 2vh;
+}
+
+input {
+  margin: 2vh;
+}
+
+label {
+  font-weight: bold;
+}
+
+.sacramento-regular {
+  font-family: "Sacramento", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
